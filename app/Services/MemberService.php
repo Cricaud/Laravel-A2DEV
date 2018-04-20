@@ -25,7 +25,7 @@ class MemberService
          * @return Collection
          * @throws \Exception
          */
-        public function lists(): Collection
+        public function emails(): Collection
         {
             return $this->member->all();
         }

@@ -36,7 +36,7 @@ class IndexControllerTest extends TestCase
      {
          // Arrange
          // Act
-         $response = $this->post('/members/create', [
+         $response = $this->post('/emails/create', [
              Member::EMAIL => 'john.doe@domain.tld'
          ]);
 
@@ -72,7 +72,7 @@ class IndexControllerTest extends TestCase
        // Arrange
        $email = 'john.doe@domain.tld';
        // Act
-       $response = $this->post('/lists/create', [
+       $response = $this->post('/emails/create', [
            Member::EMAIL => $email
        ]);
        // Assert

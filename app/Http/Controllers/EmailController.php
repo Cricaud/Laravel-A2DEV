@@ -26,7 +26,7 @@ class EmailController extends Controller
      */
     public function index(Request $request)
     {
-        $emails = $this->emailService->lists();
+        $emails = $this->emailService->emails();
 
         return view('members.index', [
             'emails' => $emails,
@@ -67,5 +67,5 @@ class EmailController extends Controller
                 'message' => 'success_message',
                 'type' => 'success'
             ]);
-    }  
+    }
 }
