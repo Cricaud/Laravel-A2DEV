@@ -32,10 +32,22 @@ class IndexControllerTest extends TestCase
      *
      * 2 Points
      */
-    public function testIndex_()
-{
+     public function testCreate_Addmember_EmailSuccessCase()
+     {
+         // Arrange
+         // Act
+         $response = $this->post('/members/create', [
+             Member::EMAIL => 'john.doe@domain.tld'
+         ]);
 
-}
+         // Assert
+         $response->assertRedirect('/');
+         $response->assertStatus(302);
+         $response->assertSessionHas('alert', [
+             'message' => 'success_message',
+             'type' => 'success'
+         ]);
+     }
 
     /**
      * Vérifie que l'ajout d'un email (john.doe@domain.tld) existant redirige vers /

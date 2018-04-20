@@ -31,9 +31,36 @@ class MemberServiceTest extends TestCase
      * 2 Points
      */
 
-     public function Email(){
+     public function testCreate_Success_NominalCase()
+  {
+      // Arrange
+      $email = 'john.doe@domain.tldk';
 
-}
+      // Assert
+      $this->emailMocked->shouldReceive('where')
+          ->once()
+          ->with([
+              Member::EMAIL => $email
+          ])
+          ->andReturn($this->emailMocked);
+
+      $this->emailMocked->shouldReceive('first')
+          ->once()
+          ->andReturnNull();
+
+
+      $this->emailMocked->shouldReceive('create')
+          ->once()
+          ->with([
+              Member::EMAIL => $email
+          ])
+          ->andReturnTrue();
+
+      $emailService = new EmailService($this->emailMocked);
+
+      // Act
+      $emailService->create($email);
+  }
 
 
     /**
@@ -46,7 +73,7 @@ class MemberServiceTest extends TestCase
      public function testCreate_ExpectException_ExceptionCase()
     {
         // Arrange
-        $email = 'First task';
+        $email = 'john.doe@domain.tldk';
 
         // SELECT email FROM tasks WHERE email = 'john.doe@domain.tldk' LIMIT 1;
         $this->emailMocked->shouldReceive('where')
