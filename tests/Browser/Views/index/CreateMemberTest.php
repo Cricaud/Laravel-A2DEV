@@ -26,7 +26,7 @@ class CreateMemberTest extends DuskTestCase
              $this->browse(function (Browser $browser) {
                  $browser->visit($this->url . '/')
                      ->assertMissing('.alert')
-                     ->value('input[email=email]', 'john.doe@domain.tld')
+                     ->value('input[name=email]', 'john.doe@domain.tld')
                      ->press(__('emails.index.send'))
                      ->assertPathIs('/')
                      ->assertSee(__('success_message'))
@@ -55,7 +55,7 @@ class CreateMemberTest extends DuskTestCase
              $this->browse(function (Browser $browser) {
                  $browser->visit($this->url . '/')
                      ->assertMissing('.alert')
-                     ->value('input[email=email]', 'john.doe@domain.tld')
+                     ->value('input[name=email]', 'john.doe@domain.tld')
                      ->press(__('emails.index.send'))
                      ->assertPathIs('/')
                      ->assertSee(__('already_exist'))
@@ -70,7 +70,6 @@ class CreateMemberTest extends DuskTestCase
      *
      * 2 Points
      */
-
 public function testCreateRequiredFields()
   {
       $this->browse(function (Browser $browser) {
